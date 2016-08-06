@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="scotchTodo" >
+<head>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- 	optimize mobile viewport -->
+	<title>Node/Angular Todo App</title>
+	<!-- Scrolls -->
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<style>
+	html{ overflow-y:scroll; }
+	body{ padding-top: 50px; }
+	#todo-list {margin-bottom: 30px;}
+	</style>
+</head>
+<body ng-controller="mainController">
+<div class="container">
+	<div class="jumbotron text-center">
+		<h1>I'm Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+	</div>
+	<!-- todo list -->
+	<div class="todo-list" class="row">
+		<div class="col-sm-4 col-sm-offset-4">
+			<!-- Loop over the todos in $scope.todos -->
+			<div class="checkbox" ng-repeat="todo in todos">
+				<label>
+					<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+				</label>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- form to create todos -->
+	<div id="todo-form" class="row">
+		<div class="col-sm-8 col-sm-offset-2 text-center">
+			<form>
+				<div class="form-group">
+					<!-- bind this to formData.text in angular -->
+					<input type="text" class="form-control input-lg text-center" ng-model="formData.text">
+				</div>
+				<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+			</form>
+		</div>
+	</div>
+
+
+</div>
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js" ></script>
+	<script src="js/angular.min.js"></script><!-- load angular -->
+	<script type="text/javascript" src="core.js" ></script>
+</body>
+</html>
+
+
